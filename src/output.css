@@ -7,6 +7,9 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
+    --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -335,6 +338,12 @@
   }
   .col-span-2 {
     grid-column: span 2 / span 2;
+  }
+  .row-span-1 {
+    grid-row: span 1 / span 1;
+  }
+  .row-span-2 {
+    grid-row: span 2 / span 2;
   }
   .container {
     width: 100%;
@@ -704,6 +713,12 @@
   .grid-cols-11 {
     grid-template-columns: repeat(11, minmax(0, 1fr));
   }
+  .grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  .grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -891,6 +906,9 @@
   .bg-\[\#d9dadb\] {
     background-color: #d9dadb;
   }
+  .bg-\[\#d52b1e\] {
+    background-color: #d52b1e;
+  }
   .bg-\[\#dbd9d9\] {
     background-color: #dbd9d9;
   }
@@ -927,8 +945,17 @@
   .bg-red {
     background-color: var(--color-red);
   }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
+  }
+  .bg-red-600 {
+    background-color: var(--color-red-600);
+  }
   .bg-white {
     background-color: var(--color-white);
+  }
+  .bg-yellow-400 {
+    background-color: var(--color-yellow-400);
   }
   .bg-\[linear-gradient\(rgba\(0\,0\,0\,0\.6\)\,rgba\(0\,0\,0\,0\.6\)\)\,url\(\'\/img\/movie-herobg\.svg\'\)\] {
     background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/img/movie-herobg.svg');
@@ -1353,6 +1380,11 @@
   .s\:w-\[160px\] {
     @media (width >= 768px) {
       width: 160px;
+    }
+  }
+  .s\:w-\[238px\] {
+    @media (width >= 768px) {
+      width: 238px;
     }
   }
   .s\:flex-col {
