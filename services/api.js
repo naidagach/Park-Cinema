@@ -19,3 +19,7 @@ async function useBiletDetails(id) {
         const res = await fetch(`${BASE_URL_BILET}/${id}`)
         return await res.json()
 }
+async function useOdenisDetails(id) {
+        const res = await fetch(`${BASE_URL_BILET}/${id}`)
+        return await res.json()
+}

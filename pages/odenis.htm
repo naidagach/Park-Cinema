@@ -111,66 +111,24 @@
       </div>
     </nav>
   </header>
-    <main class="bg-darkGrey my-10 s:p-10">
-      <h1 class="text-[30px] py-3 text-white container">Oturacaq Seçimi</h1>
-      <div>
-        <div id="biletContent" class="container bg-[linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('/img/movie-herobg.svg')] bg-cover rounded-xl overflow-hidden">
+    <main class="bg-darkGrey my-10 s:p-10 min-h-[430px]">
+      <h1 class="text-[30px] py-3 text-white container">Ödəniş</h1>
+      <div></div>
+      <div class="text-white flex flex-col gap-4 s:flex-row-reverse s:justify-between w-full">
+        <div class="s:w-[40%]" id="odenisContent"></div>
+        <div class="flex flex-col gap-6 s:w-[35%]">
+          <input class="p-2 border-b border-white" type="email" placeholder="Email" />
+          <div class="flex gap-2 p-2 border-b border-white">
+            <p>+994</p>
+            <input type="number" placeholder="51 511 11 11" />
+          </div>
+          <div class="flex gap-2 items-center">
+            <input type="checkbox" /> 
+            <p class="whitespace-nowrap">Mən <b><u>Qaydalar və şərtlər</u></b>  oxudum və razıyam.</p>
+          </div>
+          <button id="odenis" onclick="odenisiAc()" class="bg-[#86322a] row-span-1 px-4 py-2 w-[100%] s:w-[238px] h-[40px] text-[#b9b9b9] rounded-[20px] duration-150">Ödənişə keç</button>
         </div>
       </div>
-      <div class="container mt-5 text-white flex flex-col s:flex-row s:justify-between items-center gap-3">
-        <div class="mt-5 text-white flex gap-3 justify-center items-center">
-          <div class="flex items-center gap-2">
-            <div class="w-[18px] h-[18px] bg-white rounded-[50%]"></div>
-            <p>Mövcuddur</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-[18px] h-[18px] bg-black rounded-[50%]"></div>
-            <p>Tutulmuş</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-[18px] h-[18px] bg-red rounded-[50%]"></div>
-            <p>Seçilmiş</p>
-          </div>
-        </div>
-        <div id="biletQiymet" class="flex gap-3 text-[14px]"></div>
-      </div>
-
-      <div class="bg-[#4d4d4d] rounded-xl py-12 my-6 m:px-20 min-h-[600px] relative overflow-x-auto">
-        <div>
-          <div onclick="handleZoom('in')" class="text-[30px] cursor-pointer bg-[#c9cacb] h-[34px] w-[34px] p-2 rounded-md flex items-center justify-center absolute right-[70px] top-[10px]">+</div>
-          <div onclick="handleZoom('out')" class="text-[30px] cursor-pointer bg-[#c9cacb] h-[34px] w-[34px] p-2 rounded-md flex items-center justify-center absolute right-[20px] top-[10px]">-</div>
-        </div>
-        <div class="p-5 my-5 relative overflow-x-auto">
-          <div>
-            <div id="zoomTarget" class="transition-transform duration-300 origin-top-left inline-block">
-              <div class="text-white flex flex-col gap-2">
-                <ul id="siraNomreleri" class="flex flex-col gap-[17px]"></ul>
-              </div>
-              <div>
-                <ul id="birSetir" class="flex mx-[40px] gap-0.5 absolute top-[10px] left-[28px]"></ul>
-              </div>
-              <div id="ikisetsir" class="grid grid-cols-2 gap-0.5 absolute top-[50px] min-w-[78px] left-[68px]"></div>
-              <div id="coxsetir" class="grid grid-cols-11 gap-0.5 absolute top-[50px] min-w-[440px] left-[245px]"></div>
-              <div id="bessetir" class="grid grid-cols-11 gap-0.5 absolute top-[250px] min-w-[440px] left-[245px]"></div>
-              <div id="sonsetir" class="grid grid-cols-9 gap-0.5 absolute top-[450px] min-w-[360px] left-[285px]"></div>
-              <div class="my-10 mt-30 text-[#d9dadb] text-2xl text-center m:w-[80%] min-w-[500px]!">
-                Ekran
-                <img class="" src="/img/screen.svg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="flex flex-col s:flex-row s:justify-between p-4">
-        <div>
-          <div id="yerSira" class="text-[#d9dadb]">
-            
-          </div>
-          <div id="umumiQiy" class="text-[#d9dadb] font-semibold"></div>
-        </div>
-        <button id="biletAl" onclick="odenisiAc(id)" class="bg-[#86322a] row-span-1 px-4 py-2 w-[100%] s:w-[238px] h-[40px] text-[#b9b9b9] rounded-[20px] duration-150">Bilet Al</button>
-      </div>
-
     </main>
   <footer class="bg-[#86322a] py-8">
     <div class="container px-4 mx-3 flex flex-col gap-[36px] s:flex-row s:flex-wrap s:justify-between s:items-center">
@@ -233,7 +191,6 @@
   </footer>
   <script src="/js/header.js"></script>
   <script src="/services/api.js"></script>
-  <script src="/js/bilet.js"></script>
-  <script src="/js/zal.js"></script>
+  <script src="/js/odenis.js"></script>
 </body>
 </html>

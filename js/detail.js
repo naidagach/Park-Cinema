@@ -17,7 +17,7 @@ useDetailMovies(id)
   dataDetail.push(info)
   showDetail(id)
 })
-
+.finally(fin => fin())
 
 function showDetail(id) {
   const item = dataDetail[0]

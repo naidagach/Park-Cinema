@@ -1,6 +1,5 @@
 const biletContent = document.getElementById('biletContent')
 const biletQiymet = document.getElementById('biletQiymet')
-const umumiQiy = document.getElementById('umumiQiy')
 const dataBiletDetails = []
 const id = new URLSearchParams(location.search).get('id')
 
@@ -10,6 +9,7 @@ useBiletDetails(id)
   dataBiletDetails.push(info)
   showBiletsDetail(id)
   showQiymet(id)
+
 })
 
 
@@ -57,5 +57,7 @@ function showQiymet(id) {
             </p>`
           }
           
-          
-// umumiQiy.innerHTML = `<p>Ümumi: ${biletQiymet.innerText} AZN</p>`
+function odenisiAc(id) {
+  const item = dataBiletDetails[0]
+  location.href = `../pages/odenis.htm?id=${item.id}`
+}
