@@ -155,7 +155,27 @@ function choosePlace(elem) {
       boyukSec(elem);
     };
   }
-  
+}
+
+function removeTicket(sira, yer) {
+  const removed = selTickets.find(t => t.sira === sira && t.yer === yer);
+  if (!removed) return;
+
+  selTickets = selTickets.filter(t => !(t.sira === sira && t.yer === yer));
+
+  if (removed.type === 'Ailə') {
+    selectedAile--;
+
+    if (selectedAile < count) {
+      document.querySelectorAll('.ailebtn').forEach(btn => {
+        btn.style.display = 'block';
+      });
+    }
+    if (selectedAile === 0) {
+      aileClicked = false; 
+    }
+  localUpd();
+  }
 }
 
 // BOYUKU SECCCCCCCCCC
@@ -208,43 +228,10 @@ function aileniSec(elem) {
   if (selectedAile >= count) {
     document.querySelectorAll('.ailebtn').forEach(btn => {
       btn.style.display = 'none';
-    });
+    })
   }
   localUpd();
 }
-
-  function removeTicket(sira, yer) {
-    const removed = selTickets.find(t => t.sira === sira && t.yer === yer);
-    if (!removed) return;
-  
-    selTickets = selTickets.filter(t => !(t.sira === sira && t.yer === yer));
-  
-    if (removed.type === 'Ailə') {
-      selectedAile--;
-      if (selectedAile < count) {
-        document.querySelectorAll('.ailebtn').forEach(btn => {
-          btn.style.display = 'block';
-        });
-        for (let t of selTickets) {
-          if (selectedAile >= count) break;
-          if (t.type === 'Böyük') {
-            t.type = 'Ailə';
-            t.price = getPrice('Ailə');
-            selectedAile++;
-  
-            const cells = document.querySelectorAll('.elParent');
-            cells.forEach(cell => {
-              if (cell.dataset.sira === t.sira && cell.textContent.trim() === t.yer) {
-                cell.classList.add('bg-red');
-              }
-            });
-          }
-        }
-      }
-    }
-  
-    localUpd();
-  }
 
 function localUpd() {
   localStorage.setItem('selTickets', JSON.stringify(selTickets));

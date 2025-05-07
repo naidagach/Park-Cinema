@@ -61,6 +61,7 @@ function sonOdenis() {
     }, 2000);
   } else if (check.checked) whatsappTo();
 }
+
 function checkbox() {
   if (check.checked && mail.value != '' && nomre.value != '') {
     sonodenis.classList.add('bg-red');
