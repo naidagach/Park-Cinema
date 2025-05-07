@@ -68,10 +68,14 @@ function checkbox() {
   }
 }
 
-function whatsappTo(){
-  const item = dataOdenis[0]
-  const url  = ` https://wa.me/994${nomre.value}?text=${item.movie.name}%20${item.theatreTitle}%20Cinema%20Zalında%20saat%20${item.date.slice(8, 10)}.${item.date.slice(5, 7)}.${item.date.slice(0, 4)} ${item.time} ${item.hallTitle}%20olun%20`
-  window.open( url )
+function whatsappTo() {
+  const item = dataOdenis[0];
+  const url = `https://wa.me/994${nomre.value}?text=${
+    encodeURIComponent(`${item.movie.name} ${item.theatreTitle} Cinema Zalında saat ${item.date.slice(8, 10)}.${item.date.slice(5, 7)}.${item.date.slice(0, 4)} ${item.time} ${item.hallTitle} - ${
+      tickets.map(elem => `Sıra ${elem.sira.slice(0,2)} Yer ${elem.yer.slice(0,2)} (${elem.type})`).join(', ')
+    }`)
+  }`;
+  window.open(url);
 }
 
 function move() {
