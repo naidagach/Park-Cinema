@@ -111,23 +111,29 @@
       </div>
     </nav>
   </header>
-    <main class="bg-darkGrey my-10 s:p-10 min-h-[430px]">
+    <main class="bg-darkGrey my-6 s:p-10 container min-h-[470px] p-4">
       <h1 class="text-[30px] py-3 text-white container">Ödəniş</h1>
-      <div></div>
+      <span id="timer" class="text-[#d9dadb] flex justify-end">3:00</span>
+      <div id="myProgress" class="w-[100%] bg-[#6c6c6c] my-5 rounded-xl">
+        <div id="myBar" class="h-[6px] rounded-md bg-red"></div>
+      </div>
       <div class="text-white flex flex-col gap-4 s:flex-row-reverse s:justify-between w-full">
         <div class="s:w-[40%]" id="odenisContent"></div>
         <div class="flex flex-col gap-6 s:w-[35%]">
-          <input class="p-2 border-b border-white" type="email" placeholder="Email" />
+          <input id="mail" class="p-2 border-b border-white focus:outline-none focus:ring-0 focus:border-none" type="email" placeholder="Email" />
           <div class="flex gap-2 p-2 border-b border-white">
             <p>+994</p>
-            <input type="number" placeholder="51 511 11 11" />
+            <input id="nomre" type="number" class="focus:outline-none focus:ring-0 focus:border-none" placeholder="51 511 11 11" />
           </div>
           <div class="flex gap-2 items-center">
-            <input type="checkbox" /> 
+            <input onclick="checkbox()" id="check" type="checkbox" /> 
             <p class="whitespace-nowrap">Mən <b><u>Qaydalar və şərtlər</u></b>  oxudum və razıyam.</p>
           </div>
-          <button id="odenis" onclick="odenisiAc()" class="bg-[#86322a] row-span-1 px-4 py-2 w-[100%] s:w-[238px] h-[40px] text-[#b9b9b9] rounded-[20px] duration-150">Ödənişə keç</button>
+          <button id="sonodenis" onclick="sonOdenis()" class="bg-[#86322a] row-span-1 px-4 py-2 w-[100%] s:w-[238px] h-[40px] text-[#b9b9b9] rounded-[20px] duration-150">Ödənişə keç</button>
         </div>
+      </div>
+      <div id="notifEmail" class="fixed bg-[#4a4a4a] text-red rounded-md font-semibold p-4 right-[32px] bottom-[32px] transform translate-y-full opacity-0 transition-all duration-500">Email daxil edin</div>
+      <div id="notifNomre" class="fixed bg-[#4a4a4a] text-red rounded-md font-semibold p-4 right-[32px] bottom-[32px] transform translate-y-full opacity-0 transition-all duration-500"> Telefon nömrəsi daxil edin
       </div>
     </main>
   <footer class="bg-[#86322a] py-8">
@@ -189,6 +195,9 @@
     </div>
 
   </footer>
+  <div id="anim" class="fixed inset-0 bg-black grid place-items-center z-[9999]">
+    <img src="/img/animation.gif" alt="" />
+  </div>
   <script src="/js/header.js"></script>
   <script src="/services/api.js"></script>
   <script src="/js/odenis.js"></script>

@@ -9,7 +9,9 @@ useBiletDetails(id)
   dataBiletDetails.push(info)
   showBiletsDetail(id)
   showQiymet(id)
-
+})
+.finally(() => {
+  document.getElementById('anim').classList.add('hidden')
 })
 
 
@@ -57,7 +59,3 @@ function showQiymet(id) {
             </p>`
           }
           
-function odenisiAc(id) {
-  const item = dataBiletDetails[0]
-  location.href = `../pages/odenis.htm?id=${item.id}`
-}

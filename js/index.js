@@ -14,6 +14,9 @@ useAllMovies()
   data.push(...info)
   showMovies()
 })
+.finally(() => {
+  document.getElementById('anim').classList.add('hidden')
+})
 
 function showMovies() {
   movies.innerHTML = ''

@@ -90,7 +90,7 @@
           <li class="hover:text-red duration-300 cursor-pointer font-medium">Profil</li>
         </ul>
       </div>
-      <div onclick="handleFlags()" class="hidden s:flex items-center gap-3 text-white cursor-pointer relative">
+      <div onclick="handleFlags()" class="hidden s:flex items-center gap-3 text-white cursor-pointer relative z-[999]">
         <img src="/img/az-flag.svg" alt="az az-flag" />
         <p>AZE</p>
         <i class="fa-solid fa-angle-down"></i>
@@ -114,8 +114,8 @@
     <main class="bg-darkGrey p-4 s:p-10">
       <div id="content"></div>
         <section class="grid grid-cols-2 s:flex s:justify-between s:items-center w-[100%] ">
-          <div id="swiperDetail" class="col-span-2">
-            <div class="swiper w-[90%] mx-auto">
+          <div id="swiperDetail" class="col-span-2 s:w-[50%]">
+            <div class="swiper w-[90%]">
               <div id="dates" class="swiper-wrapper px-6 flex justify-between  items-center gap-10">
               </div>
               <div class="swiper-button-next"></div>
@@ -150,9 +150,7 @@
             </div>
           </div>
         </section>
-        <section id="biletler" class="my-10">
-          
-        </section>
+        <section id="biletler" class="my-10"></section>
     </main>
   <footer class="bg-[#86322a] py-8">
     <div class="container px-4 mx-3 flex flex-col gap-[36px] s:flex-row s:flex-wrap s:justify-between s:items-center">
@@ -213,6 +211,10 @@
     </div>
 
   </footer>
+  <div id="anim" class="fixed inset-0 bg-black grid place-items-center z-[9999]">
+    <img src="/img/animation.gif" alt="" />
+  </div>
+  
   <script src="/js/header.js"></script>
   <script src="/services/api.js"></script>
   <script src="/js/detail.js"></script>

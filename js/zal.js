@@ -1,5 +1,5 @@
 const siraNomreleri = document.getElementById('siraNomreleri')
-const birSetir = document.getElementById('birSetir')
+const birSet = document.getElementById('birSet')
 const ikisetsir = document.getElementById('ikisetsir')
 const coxsetir = document.getElementById('coxsetir')
 const sonsetir = document.getElementById('sonsetir')
@@ -10,6 +10,9 @@ const umumiQiy = document.getElementById('umumiQiy')
 const biletAl = document.getElementById('biletAl')
 let selTickets = []
 let count = 4
+let selectedAile = 0
+let aileClicked = false;
+let odenis = false
 
 let nomre = ''
 let birsetir = ''
@@ -18,44 +21,34 @@ let setirler = ''
 let besset = ''
 let sonset = ''
 let scaleOlcu = 1
-let saygac = 0
 
 
 for (let i = 12; i > 0; i--) {
-  nomre += `<li id="nomreler">${i}</li>`
-  saygac++
+  nomre += `<li>${i}</li>`
 }
 siraNomreleri.innerHTML = nomre
 
 for (let i = 1; i <= 17; i++) {
-  saygac++
-  
-  birsetir += `<li data-sira="12" onclick="choosePlace(this)" class="elParent p-1 relative px-2 w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
+  birsetir += `<div data-sira="12" onclick="choosePlace(this)" class="elParent p-1 relative px-2 w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
   ${i}
-      <div class="secim bg-[#ffffff88] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99] backdrop-blur">
-                    <ul>
+                    <ul class="secim bg-[#ffffffdc] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99]">
                       <li onclick="aileniSec(this)" class="ailebtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Ailə</li>
                       <li onclick="boyukSec(this)" class="boyukbtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Böyük</li>
                     </ul>
-      </div>
-  </li>`
+  </div>`
 }
 
-birSetir.innerHTML = birsetir
+birSet.innerHTML = birsetir
 
 for (let i = 0; i < 5; i++) {
   const siraNumber = 11 - i;
   for (let j = 1; j <= 2; j++) {
-  saygac++
-
     ikiset += `<div data-sira="${siraNumber}" onclick="choosePlace(this)" class="elParent p-1 relative px-2 w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
     ${j}
-        <div class="secim bg-[#ffffff88] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99] backdrop-blur">
-                    <ul>
+                    <ul class="secim bg-[#ffffffdc] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99]">
                       <li onclick="aileniSec(this)" class="ailebtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Ailə</li>
                       <li onclick="boyukSec(this)" class="boyukbtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Böyük</li>
                     </ul>
-        </div>
     </div>`
   }
 }
@@ -64,16 +57,12 @@ ikisetsir.innerHTML = ikiset
 for (let i = 0; i < 5; i++) {
   const siraNumber = 11 - i;
   for (let j = 3; j <= 13; j++) {
-  saygac++
-
     setirler += `<div data-sira="${siraNumber}" onclick="choosePlace(this)" class="elParent p-1 relative px-2 w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
     ${j}
-    <div class="secim bg-[#ffffff88] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99] backdrop-blur">
-                    <ul>
+                    <ul class="secim bg-[#ffffffdc] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute top-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99]">
                       <li onclick="aileniSec(this)" class="ailebtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Ailə</li>
                       <li onclick="boyukSec(this)" class="boyukbtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Böyük</li>
                     </ul>
-    </div>
         
     </div>`
   }
@@ -81,37 +70,31 @@ for (let i = 0; i < 5; i++) {
 coxsetir.innerHTML = setirler
 
 for (let i = 0; i < 5; i++) {
-  const siraNumber = 6 - i;
+  const siraNumber = 5 - i;
   for (let j = 1; j <= 11; j++) {
-    saygac++
-
     besset += `<div data-sira="${siraNumber}" onclick="choosePlace(this)" class="elParent p-1 relative px-2 w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
     ${j}
-        <div class="secim bg-[#ffffff88] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute bottom-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99] backdrop-blur">
-                    <ul>
+                    <ul class="secim bg-[#ffffffdc] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute bottom-[30px] w-[max-content] text-center rounded-md overflow-hidden z-[99]">
                       <li onclick="aileniSec(this)" class="ailebtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Ailə</li>
                       <li onclick="boyukSec(this)" class="boyukbtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Böyük</li>
                     </ul>
-        </div>
     </div>`
   }
 }
 bessetir.innerHTML = besset
 
 for (let i = 2; i <= 10; i++) {
-  saygac++
-
   sonset += `<li data-sira="1" onclick="choosePlace(this)" class="elParent p-1 px-2 relative  w-[30px] h-[30px] bg-[#c7c7c7] m-1 rounded-md grid place-items-center cursor-pointer">
   ${i}
-        <div class="secim bg-[#ffffff88] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute bottom-[34px] w-[max-content] text-center rounded-md overflow-hidden z-[99] backdrop-blur">
-                      <ul>
+                      <ul class="secim bg-[#ffffffdc] opacity-0 scale-95 pointer-events-none transition-all duration-200 absolute bottom-[34px] w-[max-content] text-center rounded-md overflow-hidden z-[99]">
                         <li onclick="aileniSec(this)" class="ailebtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Ailə</li>
                         <li onclick="boyukSec(this)" class="boyukbtn px-4 py-3 hover:bg-[#d52b1e] hover:text-white cursor-pointer">Böyük</li>
                       </ul>
-        </div>
   </li>`
 }
 sonsetir.innerHTML = sonset
+
+
 
 function handleZoom(a) {
   if (a === 'in') {
@@ -124,114 +107,172 @@ function handleZoom(a) {
 
 // YERE BASSSSSSSSSSSSSS
 function choosePlace(elem) {
-  elem.classList.add('bg-[#ff9c0e]')
-
+  if (elem.classList.contains('bg-red')) {
+    elem.classList.remove('bg-red');
+    elem.classList.add('bg-[#c7c7c7]');
+    
+    const sira = elem.dataset.sira;
+    const yer = elem.textContent.trim();
+    removeTicket(sira, yer);
+    
+    const wasAile = selTickets.find(t => t.type === 'Ailə' && t.sira === sira && t.yer === yer);
+    if (wasAile) {
+      document.querySelectorAll('.ailebtn').forEach(btn => {
+        btn.style.display = 'block';
+      });
+    }    
+    localUpd();
+    return;
+  }
+  if (aileClicked && selectedAile < count) {
+    aileniSec(elem); 
+    return;
+  }
+  document.querySelectorAll('.elParent').forEach(el => {
+    el.classList.remove('bg-[#ff9c0e]');
+  });
   document.querySelectorAll('.secim').forEach(item => {
-    item.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
-  })
-  const secim = elem.querySelector('.secim')
+    item.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
+  });
+
+  elem.classList.add('bg-[#ff9c0e]');
+
+  const secim = elem.querySelector('.secim');
   if (secim) {
-    secim.classList.toggle('opacity-0')
-    secim.classList.toggle('scale-95')
-    secim.classList.toggle('pointer-events-none')
-  }
-  document.onclick = function(e) {
-    if (!elem.contains(e.target)) {
-      secim.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
-      elem.classList.remove('bg-[#ff9c0e]', 'text-white')
-      document.onclick = null 
-    }
-  }
-  const aileBtn = secim.querySelector('.ailebtn');
-  const boyukBtn = secim.querySelector('.boyukbtn');
-
-  const selectedAile = selTickets.filter(t => t.type === 'Ailə').length;
-
-  if (selectedAile >= count) {
-    aileBtn.classList.add('hidden');
-    boyukBtn.classList.remove('hidden');
     secim.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
-  } else {
-    aileBtn.classList.remove('hidden');
-    boyukBtn.classList.remove('hidden');
-    secim.classList.remove('opacity-0', 'scale-95', 'pointer-events-none');
+    secim.style.display = 'block';
+  
+    secim.querySelector('.ailebtn').style.display = selectedAile < count ? 'block' : 'none';
+    secim.querySelector('.boyukbtn').style.display = 'block';
+  
+    secim.querySelector('.ailebtn').onclick = (e) => {
+      e.stopPropagation();
+      aileClicked = true;
+      aileniSec(elem);
+    };
+    secim.querySelector('.boyukbtn').onclick = (e) => {
+      e.stopPropagation();
+      boyukSec(elem);
+    };
   }
+  
 }
 
-
 // BOYUKU SECCCCCCCCCC
-function boyukSec(item) {
-  const parent = item.closest('.elParent') 
-  if (!parent) return
+function boyukSec(elem) {
+  if (!elem) return;
 
-  const sira = parent.dataset.sira
-  const yer = parent.textContent.trim('')
-  const qiymet = getPrice('Böyük')
-  if (parent) {
-    parent.classList.remove('bg-[#ff9c0e]') 
-    parent.classList.add('bg-red') 
-  }
-  document.querySelectorAll('.secim').forEach(elem => {
-    elem.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
-  })
+  elem.classList.remove('bg-[#ff9c0e]');
+  elem.classList.add('bg-red');
 
-  removeTicket(sira, yer)
+  const secim = elem.querySelector('.secim');
+  if (secim) secim.style.display = 'none';
 
-    selTickets.push({
-      type: 'Böyük',
-      price: qiymet,
-      sira, 
-      yer
-})
-  localStorage.setItem('selTickets', JSON.stringify(selTickets))
-  showYerSira()
-  getUmumiQiymet()
+  const sira = elem.dataset.sira;
+  const yer = elem.textContent.trim();
+  const qiymet = getPrice('Böyük');
+  
+  removeTicket(sira, yer);
+  selTickets.push({
+    type: 'Böyük',
+    price: qiymet,
+    sira,
+    yer
+  });
+  localUpd();
 }
 
 // AILENI SECCCCCCCCCC
-function aileniSec(item) {
-  const parent = item.closest('.elParent') 
-  if(!parent) return
+function aileniSec(elem) {
+  if (!elem || selectedAile >= count) return;
 
-  const sira = parent.dataset.sira
-  const yer = parent.textContent.trim('')
-  const qiymet = getPrice('Ailə')
+  elem.classList.remove('bg-[#ff9c0e]');
+  elem.classList.add('bg-red');
 
-  if (parent) {
-    parent.classList.remove('bg-[#ff9c0e]') 
-    parent.classList.add('bg-red') 
+  const secim = elem.querySelector('.secim');
+  if (secim) secim.style.display = 'none';
+
+  const sira = elem.dataset.sira;
+  const yer = elem.textContent.trim();
+  const qiymet = getPrice('Ailə');
+  
+  removeTicket(sira, yer);
+  selTickets.push({
+    type: 'Ailə',
+    price: qiymet,
+    sira,
+    yer
+  });
+  selectedAile++;
+  
+  if (selectedAile >= count) {
+    document.querySelectorAll('.ailebtn').forEach(btn => {
+      btn.style.display = 'none';
+    });
   }
-  document.querySelectorAll('.secim').forEach(elem => {
-    elem.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
-  })
-  removeTicket(sira, yer)
-
-    selTickets.push({
-      type: 'Ailə',
-      price: qiymet,
-      sira,
-      yer
-    })
-    localStorage.setItem('selTickets', JSON.stringify(selTickets))
-    showYerSira()
-    getUmumiQiymet()
+  localUpd();
 }
 
+  function removeTicket(sira, yer) {
+    const removed = selTickets.find(t => t.sira === sira && t.yer === yer);
+    if (!removed) return;
+  
+    selTickets = selTickets.filter(t => !(t.sira === sira && t.yer === yer));
+  
+    if (removed.type === 'Ailə') {
+      selectedAile--;
+      if (selectedAile < count) {
+        document.querySelectorAll('.ailebtn').forEach(btn => {
+          btn.style.display = 'block';
+        });
+        for (let t of selTickets) {
+          if (selectedAile >= count) break;
+          if (t.type === 'Böyük') {
+            t.type = 'Ailə';
+            t.price = getPrice('Ailə');
+            selectedAile++;
+  
+            const cells = document.querySelectorAll('.elParent');
+            cells.forEach(cell => {
+              if (cell.dataset.sira === t.sira && cell.textContent.trim() === t.yer) {
+                cell.classList.add('bg-red');
+              }
+            });
+          }
+        }
+      }
+    }
+  
+    localUpd();
+  }
 
-function removeTicket(sira, yer) {
-  selTickets = selTickets.filter( elem => !(elem.sira === sira && elem.yer === yer))
+function localUpd() {
+  localStorage.setItem('selTickets', JSON.stringify(selTickets));
+  showYerSira();
+  getUmumiQiymet();
+  
+  if (selTickets.length > 0) {
+    biletAl.style.backgroundColor = '#d52b1e';
+    biletAl.style.color = '#fff';
+  } else {
+    biletAl.style.backgroundColor = '';
+    biletAl.style.color = '';
+  }
 }
 
 function showYerSira() {
   yerSira.innerHTML = ''
   selTickets.map( elem => {
     yerSira.innerHTML += 
-                            `<div>
-                              Sıra <span id="sira">${elem.sira}</span>,
-                              Yer <span id="yer">${elem.yer}</span>
-                              <span id="nov">(${elem.type})</span>
-                            </div>`
+    `<div>
+      Sıra <span id="sira">${elem.sira.slice(0,2)}</span>,
+      Yer <span id="yer">${elem.yer.slice(0,2)}</span>
+      <span id="nov">(${elem.type})</span>
+    </div>`
   })
+  biletAl.style.backgroundColor = '#d52b1e'
+  biletAl.style.color = '#fff'
+  odenis = true
 }
 
 function getUmumiQiymet() {
@@ -248,5 +289,31 @@ function getPrice(type) {
 
   const discount = item.price[0].discounts.find(el => el.discountType === discountType);
   return discount.discountValue || 0;
-
 }
+
+function odenisiAc() {
+  const item = dataBiletDetails[0]
+  if (!odenis) {
+    const notif = document.getElementById('notification');
+    notif.classList.remove('translate-y-full', 'opacity-0');
+    notif.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      notif.classList.remove('translate-y-0', 'opacity-100');
+      notif.classList.add('translate-y-full', 'opacity-0');
+    }, 2000);
+    return;
+  }
+
+  if (selectedAile >= 1 && selectedAile < count) {
+    const notifAile = document.getElementById('notifAile');
+    notifAile.classList.remove('translate-y-full', 'opacity-0');
+    notifAile.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      notifAile.classList.remove('translate-y-0', 'opacity-100');
+      notifAile.classList.add('translate-y-full', 'opacity-0');
+    }, 2000);
+    return;
+  }
+  location.href = `../pages/odenis.htm?id=${item.id}`;
+}
+

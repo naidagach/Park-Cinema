@@ -17,7 +17,9 @@ useDetailMovies(id)
   dataDetail.push(info)
   showDetail(id)
 })
-.finally(fin => fin())
+.finally(() => {
+  document.getElementById('anim').classList.add('hidden')
+})
 
 function showDetail(id) {
   const item = dataDetail[0]

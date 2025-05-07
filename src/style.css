@@ -35,6 +35,27 @@ body::-webkit-scrollbar{
     color: rgba(0, 0, 0, 0.54);
     margin-left: 8px;
   }
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+  input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+input[type=checkbox] {
+  --webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #c7c7c7;
+    border-radius: 5px;
+    background-color: #373737;
+}
 
 @media only screen and (min-width:650px){
 :root {
