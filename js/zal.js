@@ -154,6 +154,13 @@ function choosePlace(elem) {
       e.stopPropagation();
       boyukSec(elem);
     };
+    document.onclick = function(e) {
+      if (!elem.contains(e.target)) {
+        secim.classList.add('opacity-0', 'scale-95', 'pointer-events-none')
+        elem.classList.remove('bg-[#ff9c0e]', 'text-white')
+        document.onclick = null 
+      }
+    }
   }
 }
 
