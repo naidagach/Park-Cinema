@@ -45,17 +45,15 @@ function sonOdenis() {
       notifEmail.classList.add('translate-y-full');
       notifEmail.classList.add('opacity-0');
     }, 2000);
-  } else if (nomre.value.length < 8) {
+  } else if (nomre.value.length < 9) {
     notifNomre.innerHTML = 'Etibarlı telefon nömrəsi daxil edin';
-    notifNomre.classList.remove('translate-y-full', 'opacity-0');
-    notifNomre.classList.add('translate-y-0', 'opacity-100');
+    notifNomre.classList.remove('translate-y-full', 'opacity-0','translate-y-0', 'opacity-100');
     setTimeout(() => {
       notifNomre.classList.add('translate-y-full', 'opacity-0');
     }, 2000);
   } else if (nomre.value === '') {
     notifNomre.innerHTML = 'Zəhmət olmasa telefon nömrənizi daxil edin';
-    notifNomre.classList.remove('translate-y-full', 'opacity-0');
-    notifNomre.classList.add('translate-y-0', 'opacity-100');
+    notifNomre.classList.remove('translate-y-full', 'opacity-0', 'translate-y-0', 'opacity-100');
     setTimeout(() => {
       notifNomre.classList.add('translate-y-full', 'opacity-0');
     }, 2000);
@@ -64,7 +62,9 @@ function sonOdenis() {
 
 function checkbox() {
   if (check.checked && mail.value != '' && nomre.value != '') {
-    sonodenis.classList.add('bg-red');
+    sonodenis.classList.add('bg-red', 'text-white');
+  } else {
+    sonodenis.classList.remove('bg-red', 'text-white');
   }
 }
 
